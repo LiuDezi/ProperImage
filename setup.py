@@ -43,7 +43,7 @@ print(setuptools.find_packages())
 def do_setup():
     setuptools.setup(
         name='properimage',
-        version='0.1.0.dev1',
+        version='0.1.0.dev2',
         description='Proper astronomic image analysis',
         author='Bruno Sanchez',
         author_email='bruno@oac.unc.edu.ar',
