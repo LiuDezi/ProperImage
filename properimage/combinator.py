@@ -123,10 +123,10 @@ class Combinator(Process):
             S = np.zeros(shape)
             for img in self.list_to_combine:
                 s_comp = np.ma.masked_invalid(img.s_component)
-                print 'S component obtained, summing arrays'
+                print('S component obtained, summing arrays')
                 S = np.ma.add(s_comp, S)
 
-            print 'chunk processed, now pickling'
+            print('chunk processed, now pickling')
             serialized = pickle.dumps(S)
             self.queue.put(serialized)
             return
@@ -136,7 +136,7 @@ class Combinator(Process):
                 if np.any(np.isnan(img.s_component)):
                     import ipdb; ipdb.set_trace()
                 s_comp = np.ma.masked_invalid(img.s_component)
-                print 'S component obtained'
+                print('S component obtained')
                 S_stack.append(s_comp)
 
             if self.fourier:
@@ -144,11 +144,11 @@ class Combinator(Process):
                 for s_c in S_stack:
                     sh = _fftwn(s_c)
                     S_hat_stack.append(np.ma.masked_invalid(sh))
-                print 'Fourier transformed'
-                print 'chunk processed, now pickling'
+                print('Fourier transformed')
+                print('chunk processed, now pickling')
                 serialized = pickle.dumps((S_stack, S_hat_stack))
             else:
-                print 'chunk processed, now pickling'
+                print('chunk processed, now pickling')
                 serialized = pickle.dumps(S_stack)
             self.queue.put(serialized)
             return

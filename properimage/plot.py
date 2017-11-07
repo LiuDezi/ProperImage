@@ -89,7 +89,7 @@ def plot_psfbasis(psf_basis, path=None, nbook=False, size=4, **kwargs):
 
 def plot_afields(a_fields, shape, path=None, nbook=False, size=4, **kwargs):
     if a_fields is None:
-        print 'No a_fields were calculated. Only one Psf Basis'
+        print('No a_fields were calculated. Only one Psf Basis')
         return
     a_fields.reverse()
     N = len(a_fields)

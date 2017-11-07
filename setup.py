@@ -37,7 +37,7 @@ REQUIREMENTS = ["numpy>=1.6.2",
 # =============================================================================
 # FUNCTIONS
 # =============================================================================
-print setuptools.find_packages()
+print(setuptools.find_packages())
 
 
 def do_setup():

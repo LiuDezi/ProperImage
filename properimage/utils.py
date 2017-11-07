@@ -142,7 +142,7 @@ def matching(master, cat, masteridskey=None,
     # match_ = ~np.isinf(dist_)
 
     IDs = np.zeros_like(ind_) - 13133
-    for i in xrange(len(ind_)):
+    for i in range(len(ind_)):
         if dist_[i] != np.inf:
             # dist_o = dist_[i]
             ind_o = ind_[i]
@@ -152,8 +152,8 @@ def matching(master, cat, masteridskey=None,
                 if ind_s == i:
                     IDs[i] = master[idkey][ind_o]
 
-    print(len(IDs), len(ind_), len(ind))
-    print("Matching result::  IDs > 0. => {}".format(sum(IDs>0)))
+    print((len(IDs), len(ind_), len(ind)))
+    print(("Matching result::  IDs > 0. => {}".format(sum(IDs>0))))
     if masked:
         mask = IDs > 0
         return(IDs, mask)
@@ -201,7 +201,7 @@ def transparency(images, master=None, ensemble=True):
         newcat = append_fields(newcat, 'sourceid', ids,
                                usemask=False)
 
-        for i in xrange(len(mastercat)):
+        for i in range(len(mastercat)):
             if mastercat[i]['sourceid'] not in ids:
                 detect[i] = False
         newcat.sort(order='sourceid')
@@ -229,11 +229,11 @@ def transparency(images, master=None, ensemble=True):
         # print mastercat['detected']
         master._best_srcs['sources'] = mastercat
 
-        print "p={}, q={}".format(p, q)
+        print("p={}, q={}".format(p, q))
         ident = sparse.identity(q)
         col = np.repeat(1., q)
         sparses = []
-        for j in xrange(p):
+        for j in range(p):
             ones_col = np.zeros((q, p))
             ones_col[:, j] = col
             sparses.append([sparse.csc_matrix(ones_col), ident])

@@ -141,12 +141,12 @@ class SingleImage(object):
         return 'SingleImage instance for {}'.format(self._attached_to)
 
     def _clean(self):
-        print 'cleaning... '
+        print('cleaning... ')
         try:
             os.remove(self.dbname+'.dat')
             os.remove(self.dbname+'.map')
         except:
-            print 'Nothing to clean. (Or something has failed)'
+            print('Nothing to clean. (Or something has failed)')
 
     @property
     def sigma_bkg(self):
@@ -242,7 +242,7 @@ class SingleImage(object):
                                        thresh=5*self.bkg.globalrms,
                                        mask=self.masked.mask)
             if len(srcs) < 10:
-                print 'No sources detected'
+                print('No sources detected')
 
             #~ print 'raw sources = {}'.format(len(srcs))
 
@@ -275,7 +275,7 @@ class SingleImage(object):
                 jj = np.random.choice(len(best_srcs), 1800, replace=False)
                 best_srcs = best_srcs[jj]
 
-            print 'Sources good to calculate = {}'.format(len(best_srcs))
+            print('Sources good to calculate = {}'.format(len(best_srcs)))
             self._best_sources = {'sources': best_srcs, 'fitshape': fitshape}
 
             self.db = npdb.NumPyDB_cPickle(self.dbname, mode='store')
@@ -314,7 +314,7 @@ class SingleImage(object):
             # calculate x, y, flux of stars
             # best_srcs = self._best_srcs['sources']
             fitshape = self._best_srcs['fitshape']
-            print 'Fitshape = {}'.format(fitshape)
+            print('Fitshape = {}'.format(fitshape))
 
             # best_srcs = best_srcs[best_srcs['flag']<=1]
             # renders = self._best_srcs['patches']
